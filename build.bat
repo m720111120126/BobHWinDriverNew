@@ -1,0 +1,2 @@
+msbuild /t:clean /t:build .\BobHWinDriver\BobHWinDriver.sln /p:Configuration="Release" /p:Platform=x64
+gcc -shared -s -O3 -I "D:/python_env/include" PythonAPI.c -L "D:/python_env/libs" -lpython312 -static-libgcc -static-libstdc++ -ladvapi32 -lkernel32 -o bobh_driver.pyd

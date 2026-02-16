@@ -1,0 +1,49 @@
+;
+; BobHWin7Driver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+DriverVer=
+CatalogFile=BobHWin7Driver.cat
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%DeviceName% = Install, Root\BobHWin7Driver
+
+[Install]
+CopyFiles=Drivers_CopyFiles
+
+[Drivers_CopyFiles]
+BobHWin7Driver.sys
+
+[Install.Services]
+AddService=BobHWin7Driver,0x00000002,Service_Inst
+
+[Service_Inst]
+DisplayName    = %ServiceDisplayName%
+ServiceType    = 1 ; SERVICE_KERNEL_DRIVER
+StartType      = 3 ; SERVICE_DEMAND_START
+ErrorControl   = 1
+ServiceBinary  = %12%\BobHWin7Driver.sys
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+BobHWin7Driver.sys = 1
+
+[Strings]
+ManufacturerName="OleanderOS"
+DeviceName="BobHWin7Driver"
+ServiceDisplayName="BobHWin7Driver"
+DiskName="BobHWin7Driver Source Disk"
